@@ -72,7 +72,7 @@ public class Score {
     private Boolean active = false;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_review", nullable = false)
+    @JoinColumn(name = "id_review")
     private Review idReview;
 
     @OneToMany(mappedBy = "idScore")
