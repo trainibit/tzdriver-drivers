@@ -66,7 +66,5 @@ public class Review {
     @Column(name = "comment", length = Integer.MAX_VALUE)
     private String comment;
 
-    @OneToMany(mappedBy = "idReview")
-    private List<Score> scores = new ArrayList<>();
 
 }
