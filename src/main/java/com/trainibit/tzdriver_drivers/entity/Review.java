@@ -39,12 +39,6 @@ public class Review {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
-    @Column(name = "id_trips", nullable = false)
-    private Long idTrips;
-
-    @Column(name = "id_user", nullable = false)
-    private Long idUser;
-
     @Column(name = "id_driver", nullable = false)
     private Long idDriver;
 

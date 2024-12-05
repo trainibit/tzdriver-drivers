@@ -3,11 +3,14 @@ package com.trainibit.tzdriver_drivers.response;
 import lombok.Data;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Data
 public class StateResponse {
-    private Long number;
+
+    private Long number; // entero largo
     private String name;
-    private Instant createdAt;
-    private Instant updatedAt;
+
+    // aqui tambien van los datos que se se deben calcular como uuid
+    private UUID uuid;
 }

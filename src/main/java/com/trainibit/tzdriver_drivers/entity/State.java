@@ -5,24 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
-
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "states")
-public class State {
+public class State extends AuditableRecord{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,19 +25,10 @@ public class State {
     @Column(name = "name", nullable = false, length = Integer.MAX_VALUE)
     private String name;
 
-    @ColumnDefault("true")
-    @Column(name = "active", nullable = false)
-    private Boolean active = false;
+    @Column(name = "uuid")
+    private UUID uuid;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
-
-    @OneToMany(mappedBy = "idState")
-    private List<Driver> drivers = new ArrayList<>();
+//    @OneToMany(mappedBy = "idState")
+//    private List<Driver> drivers = new ArrayList<>();
 
 }

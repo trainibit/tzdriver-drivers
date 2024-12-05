@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,12 +36,6 @@ public class Driver {
 
     @Column(name = "uuid", nullable = false)
     private UUID uuidDriver;
-
-    @Column(name = "current_latitude", nullable = false)
-    private Double currentLatitude;
-
-    @Column(name = "current_longitude", nullable = false)
-    private Double currentLongitude;
 
     @ColumnDefault("true")
     @Column(name = "active", nullable = false)

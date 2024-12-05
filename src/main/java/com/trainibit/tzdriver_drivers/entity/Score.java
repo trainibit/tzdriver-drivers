@@ -47,17 +47,6 @@ public class Score {
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
-    @ColumnDefault("'00:00:00'")
-    @Column(name = "average_response_time", nullable = false)
-    private LocalTime averageResponseTime;
-
-    @ColumnDefault("0")
-    @Column(name = "canceled_trips", nullable = false)
-    private Long canceledTrips;
-
-    @ColumnDefault("0")
-    @Column(name = "completed_trips", nullable = false)
-    private Long completedTrips;
 
     @ColumnDefault("0")
     @Column(name = "total_reviews", nullable = false)
