@@ -16,6 +16,7 @@ import java.util.UUID;
 @RequestMapping("/drivers")
 @Validated
 public class StateController {
+
     @Autowired
     private StateService stateService;
 
