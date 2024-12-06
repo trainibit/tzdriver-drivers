@@ -1,5 +1,6 @@
 package com.trainibit.tzdriver_drivers.service.imp;
 
+import com.trainibit.tzdriver_drivers.entity.State;
 import com.trainibit.tzdriver_drivers.mapper.StateMapper;
 import com.trainibit.tzdriver_drivers.repository.StateRepository;
 import com.trainibit.tzdriver_drivers.request.StateRequest;
@@ -28,31 +29,39 @@ public class StateServiceImp implements StateService {
         if (stateRepository.findByActiveTrue().isEmpty()) {
             throw new NoSuchElementException("Error, No se encontraron estados (states) con active=true");
         }else{
-            return stateMapper.mapListEntityToListDto(stateRepository.findByActiveTrue()) ;
+            return stateMapper.mapListEntityToListResponse(stateRepository.findByActiveTrue()) ;
         }
-
-        //return List.of();
     }
 
     @Override
     public StateResponse findById(UUID uuid) {
-        //usuarioMapper.mapEntityToDto(usuarioRepository.findByUuidAndActiveTrue(uuid).orElseThrow(() -> new NoSuchElementException("Error al buscar usuario con ID: " + uuid){}));
-
-        return null;
+        return stateMapper.mapEntityToResponse(stateRepository.findByUuidAndActiveTrue(uuid).orElseThrow(() -> new NoSuchElementException("Error al buscar estado (state) con ID: " + uuid){}));
     }
 
     @Override
     public StateResponse postState(StateRequest stateRequest) {
-        return null;
-    }
-
-    @Override
-    public StateResponse deleteById(UUID uuid) {
-        return null;
+        State state = stateMapper.mapRequestToEntity(stateRequest);
+        state.setUuid(UUID.randomUUID());
+        State stateSaved = stateRepository.save(state);
+        return stateMapper.mapEntityToResponse(stateSaved);
     }
 
     @Override
     public StateResponse putById(UUID uuid, StateRequest stateRequest) {
-        return null;
+        return stateRepository.findByUuidAndActiveTrue(uuid).map(state -> {
+
+            state.setName(stateRequest.getName());
+            state.setNumber(stateRequest.getNumber());
+            return stateMapper.mapEntityToResponse(stateRepository.updateAudit(state));
+        }).orElseThrow(() -> new NoSuchElementException("Error al actualizar estado (state) con ID: " + uuid) {});
+    }
+
+    @Override
+    public StateResponse deleteById(UUID uuid) {
+        return stateMapper.mapEntityToResponse( stateRepository.findByUuidAndActiveTrue(uuid).map(state -> {
+            stateRepository.deleteByIdActive(uuid);
+            stateRepository.updateAudit(state);
+            return state;
+        }).orElseThrow(() -> new NoSuchElementException("Error al eliminar usuario con uuid: " + uuid) {}));
     }
 }
