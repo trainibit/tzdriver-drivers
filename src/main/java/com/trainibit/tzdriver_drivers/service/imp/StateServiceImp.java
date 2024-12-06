@@ -6,31 +6,38 @@ import com.trainibit.tzdriver_drivers.request.StateRequest;
 import com.trainibit.tzdriver_drivers.response.StateResponse;
 import com.trainibit.tzdriver_drivers.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+@ComponentScan
 @Service
 public class StateServiceImp implements StateService {
 
     @Autowired
     private StateRepository stateRepository;
 
+    @Autowired
+    private StateMapper stateMapper;
+
     @Override
     public List<StateResponse> findAll() {
-        /*if (stateRepository.findByActiveTrue().isEmpty()) {
-            throw new NoSuchElementException("Error, No se encontro usuarios active=true");
+        if (stateRepository.findByActiveTrue().isEmpty()) {
+            throw new NoSuchElementException("Error, No se encontraron estados (states) con active=true");
         }else{
-            return StateMapper.mapListEntityToListDto(stateRepository.findByActiveTrue()) ;
-        }*/
+            return stateMapper.mapListEntityToListDto(stateRepository.findByActiveTrue()) ;
+        }
 
-        return List.of();
+        //return List.of();
     }
 
     @Override
     public StateResponse findById(UUID uuid) {
+        //usuarioMapper.mapEntityToDto(usuarioRepository.findByUuidAndActiveTrue(uuid).orElseThrow(() -> new NoSuchElementException("Error al buscar usuario con ID: " + uuid){}));
+
         return null;
     }
 

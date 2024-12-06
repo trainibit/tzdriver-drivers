@@ -21,30 +21,30 @@ public class StateController {
     private StateService stateService;
 
     @GetMapping
-    public ResponseEntity<List<StateResponse>> getUsuarios(){
+    public ResponseEntity< List<StateResponse> > getStates(){
         return ResponseEntity.ok(stateService.findAll());
     }
 
     // Crear o subir usuario
     @PostMapping
-    public ResponseEntity<StateResponse> postUsuario(@Valid @RequestBody StateRequest usuarioRequest) {
+    public ResponseEntity<StateResponse> postState(@Valid @RequestBody StateRequest usuarioRequest) {
 
         return ResponseEntity.ok( stateService.postState(usuarioRequest) );
     }
 
     @GetMapping("/{uuid}")
-    public StateResponse getUsuarioById(@PathVariable UUID uuid){
+    public StateResponse getStateById(@PathVariable UUID uuid){
         return stateService.findById(uuid);
     }
 
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<StateResponse> deleteUsuarioById(@PathVariable UUID uuid){
+    public ResponseEntity<StateResponse> deleteStateById(@PathVariable UUID uuid){
         return ResponseEntity.ok(stateService.deleteById(uuid));
     }
 
     // Update o actualiza
     @PutMapping("/{uuid}")
-    public ResponseEntity< StateResponse > putUsuario(@PathVariable UUID uuid, @RequestBody StateRequest usuarioRequest){
+    public ResponseEntity< StateResponse > putState(@PathVariable UUID uuid, @RequestBody StateRequest usuarioRequest){
         return ResponseEntity.ok(stateService.putById(uuid, usuarioRequest));
     }
 

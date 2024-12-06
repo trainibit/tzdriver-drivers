@@ -19,9 +19,7 @@ public interface StateRepository extends AuditableRepository<State, Long> {
         save(entity);
     }
 
-
     Optional<State> findByUuidAndActiveTrue(UUID uuid);
-
 
     List<State> findByActiveTrue();
 
