@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/drivers")
+@RequestMapping("/states")
 @Validated
 public class StateController {
 
@@ -25,6 +25,7 @@ public class StateController {
         return ResponseEntity.ok(stateService.findAll());
     }
 
+    /*
     // Crear o subir usuario
     @PostMapping
     public ResponseEntity<StateResponse> postState(@Valid @RequestBody StateRequest usuarioRequest) {
@@ -47,5 +48,5 @@ public class StateController {
     public ResponseEntity< StateResponse > putState(@PathVariable UUID uuid, @RequestBody StateRequest usuarioRequest){
         return ResponseEntity.ok(stateService.putById(uuid, usuarioRequest));
     }
-
+*/
 }
