@@ -18,12 +18,6 @@ public class DriverRequest {
     private String name;
     private String phoneNumber;
     private Float averageReview;
-    private UUID uuidDriver;
-    private Double currentLatitude;
-    private Double currentLongitude;
-    private Instant updatedAt;
-    private Instant createdAt;
-    private Vehicle idVehicle; // hay que probar si se utiliza
     private Score idScore;
     private State idState;
 }

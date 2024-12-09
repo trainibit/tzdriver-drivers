@@ -1,10 +1,16 @@
 package com.trainibit.tzdriver_drivers.response;
 
+import com.trainibit.tzdriver_drivers.entity.Score;
+import com.trainibit.tzdriver_drivers.entity.State;
+
+import java.util.UUID;
+
 public class DriverResponse {
     private String name;
     private String phoneNumber;
-    private String averageReview;
-    private String telefono;
+    private Float averageReview;
+    private Score idScore;
+    private State idState;
 
-    public DriverResponse(String nombre, String apellido, String email, String telefono) {}
+    private UUID uuidDriver;
 }

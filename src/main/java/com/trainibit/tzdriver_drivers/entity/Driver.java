@@ -11,16 +11,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
-
-import java.time.Instant;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "drivers")
-public class Driver {
+public class Driver extends AuditableRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,18 +33,6 @@ public class Driver {
 
     @Column(name = "uuid", nullable = false)
     private UUID uuidDriver;
-
-    @ColumnDefault("true")
-    @Column(name = "active", nullable = false)
-    private Boolean active = false;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_vehicle", nullable = false)

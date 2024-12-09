@@ -16,6 +16,7 @@ CREATE TABLE public.reviews (
                                 friendliness int4 NOT NULL,
                                 cleanliness int4 NOT NULL,
                                 "comment" varchar NULL,
+                                active bool DEFAULT true NOT NULL,
                                 CONSTRAINT reviews_pk PRIMARY KEY (id),
                                 CONSTRAINT reviews_unique UNIQUE (uuid),
                                 CONSTRAINT reviews_unique_3 UNIQUE (id_driver)

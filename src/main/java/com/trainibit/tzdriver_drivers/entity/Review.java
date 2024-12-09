@@ -23,21 +23,13 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "reviews")
-public class Review {
+public class Review  extends AuditableRecord{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "uuid", nullable = false)
-    private UUID uuidReview;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
+    private UUID uuid;
 
     @Column(name = "id_driver", nullable = false)
     private Long idDriver;
@@ -59,6 +51,4 @@ public class Review {
 
     @Column(name = "comment", length = Integer.MAX_VALUE)
     private String comment;
-
-
 }

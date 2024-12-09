@@ -7,6 +7,7 @@ import com.trainibit.tzdriver_drivers.request.StateRequest;
 import com.trainibit.tzdriver_drivers.response.StateResponse;
 import com.trainibit.tzdriver_drivers.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class StateServiceImp implements StateService {
     private StateRepository stateRepository;
 
     @Autowired
-    private StateMapper stateMapper;
+    private @Qualifier("stateMapperImpl") StateMapper stateMapper;
 
     @Override
     public List<StateResponse> findAll() {

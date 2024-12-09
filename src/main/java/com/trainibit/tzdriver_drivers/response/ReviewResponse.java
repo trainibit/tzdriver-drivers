@@ -1,14 +1,8 @@
-package com.trainibit.tzdriver_drivers.request;
+package com.trainibit.tzdriver_drivers.response;
 
-import jakarta.persistence.Column;
-import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
-
-import java.time.Instant;
 import java.util.UUID;
 
-@Data
-public class ReviewRequest {
+public class ReviewResponse {
     private Float average;
     private Integer punctuality;
     private Integer safeDriving;
@@ -16,4 +10,6 @@ public class ReviewRequest {
     private Integer cleanliness;
     private String comment;
 
+    private UUID uuid;
+    private Long idDriver;
 }
