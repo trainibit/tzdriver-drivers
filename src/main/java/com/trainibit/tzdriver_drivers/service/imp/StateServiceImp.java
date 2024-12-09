@@ -37,6 +37,7 @@ public class StateServiceImp implements StateService {
     @Override
     public StateResponse findById(UUID uuid) {
         return stateMapper.mapEntityToResponse(stateRepository.findByUuidAndActiveTrue(uuid).orElseThrow(() -> new NoSuchElementException("Error al buscar estado (state) con ID: " + uuid){}));
+
     }
 
     @Override

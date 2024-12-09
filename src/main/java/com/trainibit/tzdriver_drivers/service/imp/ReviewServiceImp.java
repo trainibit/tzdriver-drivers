@@ -1,7 +1,6 @@
 package com.trainibit.tzdriver_drivers.service.imp;
 
 import com.trainibit.tzdriver_drivers.entity.Review;
-import com.trainibit.tzdriver_drivers.entity.State;
 import com.trainibit.tzdriver_drivers.mapper.ReviewMapper;
 import com.trainibit.tzdriver_drivers.repository.ReviewRepository;
 import com.trainibit.tzdriver_drivers.request.ReviewRequest;
@@ -23,6 +22,7 @@ public class ReviewServiceImp implements ReviewService {
     @Autowired
     private ReviewRepository reviewRepository;
 
+    @Autowired
     private @Qualifier("reviewMapperImpl") ReviewMapper reviewMapper;
 
     @Override
@@ -36,7 +36,8 @@ public class ReviewServiceImp implements ReviewService {
 
     @Override
     public ReviewResponse findById(UUID uuid) {
-        return reviewMapper.mapEntityToResponseReview(reviewRepository.findByUuidAndActiveTrue(uuid).orElseThrow(() -> new NoSuchElementException("Error al buscar calificacion (review) con ID: " + uuid){}));
+        //return reviewMapper.mapEntityToResponseReview(reviewRepository.findByUuidAndActiveTrue(uuid).orElseThrow(() -> new NoSuchElementException("Error al buscar calificacion (review) con ID: " + uuid){}));
+        return null;
     }
 
     @Override
@@ -44,6 +45,7 @@ public class ReviewServiceImp implements ReviewService {
         System.out.println(reviewRequest.toString());
         Review review = reviewMapper.mapRequestToEntityReview(reviewRequest);
         review.setUuid(UUID.randomUUID());
+        review.setIdDriver(1l);
         Review reviewSaved = reviewRepository.save(review);
         return reviewMapper.mapEntityToResponseReview(reviewSaved);
     }
