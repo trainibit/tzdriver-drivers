@@ -1,6 +1,7 @@
 package com.trainibit.tzdriver_drivers.handler;
 
 import com.trainibit.tzdriver_drivers.response.ApiErrorResponse;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.apache.coyote.BadRequestException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.NoSuchElementException;
 
+@Hidden //agregado por problemas en swager que entiende este como un controller.
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 

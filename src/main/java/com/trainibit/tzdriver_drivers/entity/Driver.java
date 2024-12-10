@@ -30,7 +30,7 @@ public class Driver extends AuditableRecord {
     private Float averageReview;
 
     @Column(name = "uuid", nullable = false)
-    private UUID uuidDriver;
+    private UUID uuid;
 
     //@OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_vehicle", nullable = false)

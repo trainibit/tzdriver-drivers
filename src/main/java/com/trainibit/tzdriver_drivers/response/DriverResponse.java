@@ -10,5 +10,5 @@ public class DriverResponse {
 
     private Long idState;
     private Long idVehicle;
-    private UUID uuidDriver;
+    private UUID uuid;
 }

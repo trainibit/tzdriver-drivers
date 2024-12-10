@@ -1,5 +1,6 @@
 package com.trainibit.tzdriver_drivers.repository;
 
+import com.trainibit.tzdriver_drivers.entity.Driver;
 import com.trainibit.tzdriver_drivers.entity.Review;
 import org.springframework.stereotype.Repository;
 
@@ -10,21 +11,22 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface ReviewRepository extends AuditableRepository<Review, Long>{
+public interface DriverRepository extends AuditableRepository<Driver, Long>{
 
-    Optional<Review> findByUuidAndActiveTrue(UUID uuid);
+    Optional<Driver> findByUuidAndActiveTrue(UUID uuid);
 
-    List<Review> findByActiveTrue();
+    List<Driver> findByActiveTrue();
 
     default void deleteByIdActive(UUID uuid){
-        Review entity = findByUuidAndActiveTrue(uuid).get();
+        Driver entity = findByUuidAndActiveTrue(uuid).get();
         entity.setActive(false);
         save(entity);
     }
 
     @Override
-    default Review updateAudit(Review entity) {
+    default Driver updateAudit(Driver entity) {
         entity.setUpdatedAt(Timestamp.from(Instant.now()));
         return save(entity);
     }
+
 }
