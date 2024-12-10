@@ -1,7 +1,6 @@
 package com.trainibit.tzdriver_drivers.repository;
 
 import com.trainibit.tzdriver_drivers.entity.Review;
-import com.trainibit.tzdriver_drivers.entity.State;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;

@@ -28,7 +28,7 @@ public class State extends AuditableRecord{
     @Column(name = "uuid")
     private UUID uuid;
 
-//    @OneToMany(mappedBy = "idState")
-//    private List<Driver> drivers = new ArrayList<>();
+    //    @OneToMany(mappedBy = "idState")
+    //    private List<Driver> drivers = new ArrayList<>();
 
 }
