@@ -3,9 +3,7 @@ package com.trainibit.tzdriver_drivers.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +12,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "vehicles")
-public class Vehicle {
+public class Vehicle extends AuditableRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
