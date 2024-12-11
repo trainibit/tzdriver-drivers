@@ -1,12 +1,6 @@
 package com.trainibit.tzdriver_drivers.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.UUID;
@@ -32,14 +26,12 @@ public class Driver extends AuditableRecord {
     @Column(name = "uuid", nullable = false)
     private UUID uuid;
 
-    //@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_vehicle", nullable = false)
-    private Long idVehicle;
-
-    //@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_state", nullable = false)
     private Long idState;
 
-    //    @OneToMany(mappedBy = "idState")
-    //    private List<Driver> drivers = new ArrayList<>();
+    // Relación ManyToOne con Vehicle
+    @ManyToOne
+    @JoinColumn(name = "id_vehicle", nullable = false) // Llave foránea hacia Vehicle
+    private Vehicle vehicle;
+
 }

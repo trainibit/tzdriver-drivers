@@ -1,12 +1,6 @@
 package com.trainibit.tzdriver_drivers.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
@@ -34,31 +28,13 @@ public class Vehicle {
     @Column(name = "color", nullable = false, length = Integer.MAX_VALUE)
     private String color;
 
-    @Column(name = "model", nullable = false, length = Integer.MAX_VALUE)
-    private String model;
-
-    @Column(name = "year")
-    private Long year;
-
     @Column(name = "plate_number", nullable = false, length = Integer.MAX_VALUE)
     private String plateNumber;
 
     @Column(name = "passager_capacity", nullable = false)
     private Long passagerCapacity;
 
-    @ColumnDefault("true")
-    @Column(name = "active", nullable = false)
-    private Boolean active = false;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "update_at", nullable = false)
-    private Instant updateAt;
-
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
-
-    /*@OneToMany(mappedBy = "idVehicle")
-    private List<Driver> drivers = new ArrayList<>();*/
-
+    // Relación OneToMany con Driver
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Driver> drivers = new ArrayList<>();
 }
