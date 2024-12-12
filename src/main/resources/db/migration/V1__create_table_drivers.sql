@@ -32,7 +32,7 @@ CREATE TABLE public.vehicles (
                                  plate_number varchar NOT NULL,
                                  passager_capacity int8 NOT NULL,
                                  active bool DEFAULT true NOT NULL,
-                                 update_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+                                 updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
                                  created_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
                                  CONSTRAINT vehicles_pk PRIMARY KEY (id),
                                  CONSTRAINT vehicles_unique UNIQUE (uuid)
