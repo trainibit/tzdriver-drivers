@@ -10,5 +10,4 @@ public class DriverRequest {
     private String phoneNumber;
     private Float averageReview; //esta se debera calcular mas adelante si hay 3 calificaciones o mas probablemente puede ser null
 
-    private List<VehicleRequest> vehicles;
 }

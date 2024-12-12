@@ -13,7 +13,7 @@ public interface DriverService {
 
     DriverResponse findById(UUID uuid);
 
-    DriverResponse postState(DriverRequest driverRequest);
+    DriverResponse postDriver(DriverRequest driverRequest);
 
     DriverResponse deleteById(UUID uuid);
 

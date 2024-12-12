@@ -28,4 +28,5 @@ public interface StateRepository extends AuditableRepository<State, Long> {
         entity.setUpdatedAt(Timestamp.from(Instant.now()));
         return save(entity);
     }
+
 }

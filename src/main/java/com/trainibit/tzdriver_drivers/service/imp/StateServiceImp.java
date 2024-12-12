@@ -25,6 +25,8 @@ public class StateServiceImp implements StateService {
     @Autowired
     private @Qualifier("stateMapperImpl") StateMapper stateMapper;
 
+
+
     @Override
     public List<StateResponse> findAll() {
         if (stateRepository.findByActiveTrue().isEmpty()) {

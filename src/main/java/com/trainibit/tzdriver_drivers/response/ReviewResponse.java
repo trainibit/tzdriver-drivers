@@ -1,7 +1,10 @@
 package com.trainibit.tzdriver_drivers.response;
 
+import lombok.Data;
+
 import java.util.UUID;
 
+@Data
 public class ReviewResponse {
     private Float average;
     private Integer punctuality;

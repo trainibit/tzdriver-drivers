@@ -26,12 +26,21 @@ public class Driver extends AuditableRecord {
     @Column(name = "uuid", nullable = false)
     private UUID uuid;
 
-    @JoinColumn(name = "id_state", nullable = false)
-    private Long idState;
+    //@ManyToOne
+    //@JoinColumn(name = "id_state", nullable = false)
+    @Column(name = "id_state", nullable = false)
+    private Long state;
 
     // Relación ManyToOne con Vehicle
     @ManyToOne
     @JoinColumn(name = "id_vehicle", nullable = false) // Llave foránea hacia Vehicle
     private Vehicle vehicle;
+
+    @PrePersist
+    public void generateUuid() {
+        if (this.uuid == null) {
+            this.uuid = UUID.randomUUID();
+        }
+    }
 
 }

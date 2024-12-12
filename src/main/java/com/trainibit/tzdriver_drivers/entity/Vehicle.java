@@ -32,7 +32,7 @@ public class Vehicle extends AuditableRecord {
     @Column(name = "passager_capacity", nullable = false)
     private Long passagerCapacity;
 
-    // Relación OneToMany con Driver
+    // El orphanRemoval probablemente deberia ser un false, y programar el borrado logico
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Driver> drivers = new ArrayList<>();
 }

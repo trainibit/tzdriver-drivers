@@ -13,4 +13,5 @@ public interface StateMapper {
     State mapRequestToEntity(StateRequest stateRequest);
     List<StateResponse> mapListEntityToListResponse(List<State> state);
 
+
 }

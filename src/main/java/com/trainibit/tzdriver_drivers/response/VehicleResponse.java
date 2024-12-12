@@ -2,6 +2,7 @@ package com.trainibit.tzdriver_drivers.response;
 
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -14,4 +15,5 @@ public class VehicleResponse {
 
     // mas los datos calculados
     private UUID uuid;
+    private List<DriverResponse> drivers;
 }

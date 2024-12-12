@@ -1,8 +1,11 @@
 package com.trainibit.tzdriver_drivers.controller;
 
 import com.trainibit.tzdriver_drivers.request.DriverRequest;
+import com.trainibit.tzdriver_drivers.request.VehicleRequest;
 import com.trainibit.tzdriver_drivers.response.DriverResponse;
+import com.trainibit.tzdriver_drivers.response.VehicleResponse;
 import com.trainibit.tzdriver_drivers.service.DriverService;
+import com.trainibit.tzdriver_drivers.service.VehicleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,38 +22,36 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/drivers")
 @Validated
-public class DriverController {
+@RestController
+@RequestMapping("/vehicles")
+public class VehicleController {
 
     @Autowired
-    private DriverService driverService;
+    private VehicleService vehicleService;
 
     @GetMapping
-    public ResponseEntity<List<DriverResponse>> getDrivers(){
-        return ResponseEntity.ok(driverService.findAll());
+    public ResponseEntity<List<VehicleResponse>> getVehicles(){
+        return ResponseEntity.ok(vehicleService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<DriverResponse> postDriver(@Valid @RequestBody DriverRequest driverRequest) {
-        System.out.println(driverRequest.toString());
-        return ResponseEntity.ok( driverService.postDriver(driverRequest) );
+    public ResponseEntity<VehicleResponse> postVehicle(@Valid @RequestBody VehicleRequest vehicleRequest) {
+        return ResponseEntity.ok( vehicleService.postVehicle(vehicleRequest) );
     }
 
     @GetMapping("/{uuid}")
-    public DriverResponse getDriverById(@PathVariable UUID uuid){
-        return driverService.findById(uuid);
+    public VehicleResponse getVehicleById(@PathVariable UUID uuid){
+        return vehicleService.findById(uuid);
     }
 
     @PutMapping("/{uuid}")
-    public ResponseEntity< DriverResponse > putDriver(@PathVariable UUID uuid, @RequestBody DriverRequest driverRequest){
-        return ResponseEntity.ok(driverService.putById(uuid, driverRequest));
+    public ResponseEntity< VehicleResponse > putDriver(@PathVariable UUID uuid, @RequestBody VehicleRequest vehicleRequest){
+        return ResponseEntity.ok(vehicleService.putById(uuid, vehicleRequest));
     }
 
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<DriverResponse> deleteDriverById(@PathVariable UUID uuid){
-        return ResponseEntity.ok(driverService.deleteById(uuid));
+    public ResponseEntity<VehicleResponse> deleteDriverById(@PathVariable UUID uuid){
+        return ResponseEntity.ok(vehicleService.deleteById(uuid));
     }
-
 }

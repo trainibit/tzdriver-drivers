@@ -1,8 +1,11 @@
 package com.trainibit.tzdriver_drivers.response;
 
 
+import lombok.Data;
+
 import java.util.UUID;
 
+@Data
 public class DriverResponse {
     private String name;
     private String phoneNumber;
